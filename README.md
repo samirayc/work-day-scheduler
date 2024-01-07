@@ -5,7 +5,7 @@ This application was made for Module 5s Homework Challenge. It is a calendar app
 
 ## Usage
 This application can be accessed at https://samirayc.github.io/work-day-scheduler/ by copying and pasting it into your browser. Once opened, the page should look similar to:
-![Alt text](<Develop/Images/Work Day Scheduler.png>)
+![Alt text](<Work Day Scheduler.png>)
 
 Past hours will be in grey, the current hour will be in red, and future hours will be in green. When you click on a time block, you will be able to type in whatever event or appointment you may have.
 
