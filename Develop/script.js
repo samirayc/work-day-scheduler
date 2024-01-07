@@ -1,3 +1,11 @@
+var currentDayEl = $('#currentDay');
+var saveBtnEl = $('.saveBtn');
+var timeBlockEl = $('.time-block');
+var descriptionEl = $('.description');
+var currentTime = dayjs().format('dddd, MMMM D, h:mm');
+currentDayEl.text(currentTime);
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -8,7 +16,28 @@ $(function () {
     // function? How can DOM traversal be used to get the "hour-x" id of the
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage?
-    //
+
+    // Adding event listener
+   saveBtnEl.on('click', function (){
+    var appointmentCreatedEl = $('.appointment-created');
+
+    // Getting value of description box and the selected time
+    var textInput = $(this).siblings('description').val().trim();
+    var timeSelected = $(this).parent().attr('id');
+
+    // Saving to local storage
+    if (textInput === ""){
+        return;
+    } else {
+        localStorage.setItem(timeSelected, textInput);
+        appointmentCreatedEl.text("Appointment added to localStorage!");
+
+        setTimeout(function () {
+            appointmentCreatedEl.text("");
+        }, 3000)
+        }
+   }) 
+
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
@@ -18,7 +47,6 @@ $(function () {
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
-    //
     // TODO: Add code to display the current date in the header of the page.
   });
   
